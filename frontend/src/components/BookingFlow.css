@@ -1,0 +1,9 @@
+﻿.booking-container { max-width: 100%; margin: 0 auto; background: #111; padding: 12px; border-radius: 16px; color: white; border: 1px solid #222; box-sizing: border-box; }
+.progress-bar { display: flex; gap: 6px; margin-bottom: 15px; }
+.progress-step { flex: 1; height: 4px; border-radius: 10px; background: #333; }
+.progress-step.active { background: #E2C078; }
+.movie-title { color: #E2C078; }
+.label { font-size: 12px; color: #888; }
+.days-grid { display: flex; gap: 5px; margin-bottom: 12px; }
+.day-card { flex: 1; padding: 8px 2px; border-radius: 12px; text-align: center; border: 1px solid #333; background: #1A1A1A; font-size: 10px; cursor: pointer; color: white; }
+.day-card.selected { border: 2px solid #E2C078; background: #1e1a0a; color: #E2C078; }
