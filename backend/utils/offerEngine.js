@@ -15,7 +15,7 @@ function computeDiscountAmount(subTotal, discountType, discountValue) {
 
 function isWithValidity(offer) {
   const now = new Date();
-  if (offer.startAt && now < new Date(offer.startAt)) return false;
+  if (offer.startsAt && now < new Date(offer.startsAt)) return false;
   if (offer.endAt && now > new Date(offer.endAt)) return false;
   return true;
 }

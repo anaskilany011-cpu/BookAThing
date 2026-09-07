@@ -14,7 +14,7 @@ exports.authenticateJWT = async (req, res, next) => {
     const token = authHeader.split(' ')[1];
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
         
         const user = await User.findById(decoded.userId).lean();
         if (!user) {
@@ -28,8 +28,8 @@ exports.authenticateJWT = async (req, res, next) => {
             name: user.name
         };
 
-        if (user.role === 'theater_admin') {
-            const theater = await Theater.findOne({ user_id: user._id }).select('_id').lean();
+        if (user.role === 'owner') {
+            const theater = await Theater.findOne({ ownerId: user._id }).select('_id').lean();
             if (!theater) {
                 return res.status(403).json({ 
                     message: 'Theater admin account is not properly configured.' 
@@ -75,7 +75,7 @@ exports.authorizeTheatreAdmin = async (req, res, next) => {
         return res.status(401).json({ message: 'Unauthorized: Authentication required.' });
     }
 
-    if (req.user.role !== 'theater_admin') {
+    if (req.user.role !== 'owner') {
         return res.status(403).json({ message: 'Forbidden: Theatre Admin role required.' });
     }
 
@@ -90,7 +90,7 @@ exports.authorizeTheatreAdmin = async (req, res, next) => {
     try {
         const theater = await Theater.findOne({
             _id: theaterId,
-            user_id: req.user.userId
+            ownerId: req.user.userId
         }).select('_id').lean();
 
         if (!theater) {

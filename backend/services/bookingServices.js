@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Booking = require('../models/Booking');
-const Screening = require('../models/Screening'); // movie_screening
-const TheaterScreen = require('../models/TheaterScreen');
-const { evaluateBestOffer } = require('../utils/OfferEngine');
+const Screening = require('../models/screening'); // movie_screening
+const TheaterScreen = require('../models/theaterScreen');
+const { evaluateBestOffer } = require('../utils/offerEngine');
 
 class BookingService {
 

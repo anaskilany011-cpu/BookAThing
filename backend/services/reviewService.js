@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Review = require('../models/ReviewModel');
+const Review = require('../models/Review');
 const Movie = require('../models/Movie');
 const { getPagination, sanitizeComment } = require('../utils/reviewUtils');
 const {

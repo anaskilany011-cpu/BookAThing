@@ -19,7 +19,7 @@ const offerSchema = new mongoose.Schema({
   },
   condition: {
     type: Object,
-    requied: function () {
+    required: function () {
       return this.type==='conditional'
     }
   },
@@ -38,9 +38,14 @@ const offerSchema = new mongoose.Schema({
   },
   discountType: {
     type: String,
-    enum: ['precentage', 'flat'],
+    enum: ['percentage', 'flat'],
     required: true,
     
+  },
+  discountValue: {
+    type: Number,
+    required: true,
+    min: [0, 'Discount value cannot be negative']
   },
   isActive: {
     type: Boolean,
@@ -48,7 +53,7 @@ const offerSchema = new mongoose.Schema({
   },
   startsAt: {
     type: Date,
-      default:Date.now()
+      default:Date.now
   },
   endAt: { type: Date },
 },

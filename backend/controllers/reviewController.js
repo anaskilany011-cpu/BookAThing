@@ -1,5 +1,5 @@
 const ReviewService = require('../services/reviewService');
-const { formatReviewResponse, formatReviewListResponse } = require('../responses/reviewResponse');
+const { formatReviewResponse, formatReviewListResponse } = require('../responses/ReviewResponse');
 const asyncHandler = require('../utils/asyncHandler');
 
 // --- Create a new review ---

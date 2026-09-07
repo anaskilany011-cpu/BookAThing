@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -57,5 +57,12 @@ const userSchema = new mongoose.Schema({
 
  )
 ;
+
+userSchema.set('toJSON', {
+    transform: (doc, ret) => {
+        delete ret.password;
+        return ret;
+    }
+});
 
 module.exports=mongoose.model("User",userSchema)

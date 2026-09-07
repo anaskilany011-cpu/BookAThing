@@ -1,11 +1,10 @@
-// use when u make an update or del smthing
+// use when u make an update or delete something
+const BaseResponse = require('./BaseResponse');
 
-import BaseResponse from "./BaseResponse";
-class SuccessResponse extends BaseResponse{
-    constructor(data=null,message="procces compeleted")
-{
-    super(200,true,message,data);
+class SuccessResponse extends BaseResponse {
+    constructor(data = null, message = "Process completed") {
+        super(200, message, true, data);
+    }
+}
 
-}
-}
-export default SuccessResponse
+module.exports = SuccessResponse;

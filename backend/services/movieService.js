@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Movie = require('../models/Movie');
-const Showtime = require('../models/Showtime');
+const Showtime = require('../models/screening');
 const Booking = require('../models/Booking');
 const Payment = require('../models/Payment');
-const Theater = require('../models/Theater');
+const Theater = require('../models/theater');
 const { getStartOfToday } = require('../utils/dateUtils');
 
 class MovieService {
@@ -11,7 +11,7 @@ class MovieService {
         return await Movie.find().sort({title:1});
     }
 
-    static async fetchMovieWithShowTimes(id){
+    static async fetchMovieWithShowtimes(id){
         const movie = await Movie.findById(id);
         if(!movie) return null;
 
@@ -28,7 +28,7 @@ class MovieService {
         return {movie , showtimes};
     }
 
-    static async searchMovieByTitle(queryStr){
+    static async searchMoviesByTitle(queryStr){
         const searchRegex = new RegExp(queryStr.trim(), 'i');
         return await Movie.find({title:{$regex:searchRegex}})
         .select('_id title poster_url');
@@ -173,15 +173,15 @@ static async fetchNowInCinemas(city) {
         const stats = await Booking.aggregate([
             {
                 $match: {
-                    showtime_id: { $in: showtimeIds },
-                    status: 'active',
-                    booking_date: { $gte: startDate }
+                    showtimeId: { $in: showtimeIds },
+                    status: 'confirmed',
+                    createdAt: { $gte: startDate }
                 }
             },
             {
                 $group: {
                     _id: null,
-                    totalTickets: { $sum: { $size: "$booked_seats" } }
+                    totalTickets: { $sum: { $size: "$seats" } }
                 }
             }
         ]);
@@ -198,7 +198,7 @@ static async fetchNowInCinemas(city) {
             const showtimeIds = showtimesToDelete.map(st => st._id);
 
             if (showtimeIds.length > 0) {
-                const bookingsToDelete = await Booking.find({ showtime_id: { $in: showtimeIds } }).select('_id').session(session);
+                const bookingsToDelete = await Booking.find({ showtimeId: { $in: showtimeIds } }).select('_id').session(session);
                 const bookingIds = bookingsToDelete.map(b => b._id);
 
                 if (bookingIds.length > 0) {

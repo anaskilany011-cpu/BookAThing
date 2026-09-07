@@ -1,6 +1,6 @@
 // backend/models/Otp.js
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs'); // Required if you hash OTPs (recommended)
+const bcrypt = require('bcrypt'); // Required if you hash OTPs (recommended)
 
 const otpSchema = new mongoose.Schema({
     email: {

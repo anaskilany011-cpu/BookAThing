@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Payment = require('../models/PaymentModel');
+const Payment = require('../models/Payment');
 const Booking = require('../models/Booking');
 const { generateTransactionRef } = require('../utils/paymentUtils');
 const { PaymentNotFoundError, PaymentFailedError } = require('../exceptions/paymentExceptions');

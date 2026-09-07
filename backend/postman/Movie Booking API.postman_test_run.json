@@ -1,0 +1,1276 @@
+{
+	"id": "b2f2864d-0954-4db5-aea4-2dbcc053014c",
+	"name": "Movie Booking API",
+	"timestamp": "2026-09-06T22:33:33.684Z",
+	"collection_id": "51979023-8fa7fe1a-be31-4116-bbbe-c183b7c66ab0",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-09-06T22:33:28.113Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2def716a-1b8e-423c-830d-22a2de66de9e",
+			"name": "Send Signup OTP",
+			"url": "http://localhost:5000/api/auth/send-signup-otp",
+			"time": 104,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				104
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "47533306-65f9-4bc3-ac87-db27bdc64efd",
+			"name": "Complete Signup",
+			"url": "http://localhost:5000/api/auth/complete-signup",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2c6e939f-ec60-4112-a0d7-fd63a4d33c8e",
+			"name": "Login",
+			"url": "http://localhost:5000/api/auth/login",
+			"time": 6,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "243a7816-99b2-4a03-a5f3-b93eff201d9a",
+			"name": "Refresh Token",
+			"url": "http://localhost:5000/api/auth/refresh-token",
+			"time": 2,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "885a0da2-b30f-49b3-ba1a-a2213ce55ead",
+			"name": "Logout",
+			"url": "http://localhost:5000/api/auth/logout",
+			"time": 3,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6c0e483c-b98e-41e8-ba5f-785c4dc5342f",
+			"name": "Forgot Password",
+			"url": "http://localhost:5000/api/auth/forgot-password",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "86f852a4-8e28-425c-8131-6e9cbae4970f",
+			"name": "Reset Password",
+			"url": "http://localhost:5000/api/auth/reset-password",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ed172d74-4b20-47dc-850b-0304f293648c",
+			"name": "Get All Movies",
+			"url": "http://localhost:5000/api/movies",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f21cfbb0-206b-49c3-a438-2bc0bc3a8aed",
+			"name": "Search Movies",
+			"url": "http://localhost:5000/api/movies/search?query=batman",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b85431bf-b583-423c-8ae2-4c912aa3d5e5",
+			"name": "Now In Cinemas",
+			"url": "http://localhost:5000/api/movies/now-in-cinemas",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a026eea9-b740-4241-ad17-8f43c3344230",
+			"name": "Coming Soon",
+			"url": "http://localhost:5000/api/movies/coming-soon",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f9610699-f977-4231-9029-b7001d15e50a",
+			"name": "Popular Movies",
+			"url": "http://localhost:5000/api/movies/popular",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a455895f-dbd9-44ec-b3e9-e65494af6452",
+			"name": "Upcoming Movies",
+			"url": "http://localhost:5000/api/movies/upcoming",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "28a04b7d-ac39-43cd-8b97-25bffdf02dca",
+			"name": "Get Movie By ID",
+			"url": "http://localhost:5000/api/movies/",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "deacf8d5-399e-4ec2-925a-f010d52ef7a9",
+			"name": "Get Booking Stats For Movie",
+			"url": "http://localhost:5000/api/movies//booking-stats",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5d3cf460-4f0c-4795-9831-171b90050302",
+			"name": "Create Movie (admin)",
+			"url": "http://localhost:5000/api/movies",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7113ba78-b4a4-4a8e-ab6f-2b815c3d59a5",
+			"name": "Update Movie (admin)",
+			"url": "http://localhost:5000/api/movies/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1aa64eef-4a18-432c-b081-ef7fa1a3277a",
+			"name": "Delete Movie (admin)",
+			"url": "http://localhost:5000/api/movies/",
+			"time": 1,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9d3474d7-144f-4dc4-9d19-33ca1cd63b5b",
+			"name": "Create Theater (owner/admin)",
+			"url": "http://localhost:5000/api/theaters",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9ef2e0e9-4fba-4bb0-b04d-b100101c589a",
+			"name": "Get All Theaters",
+			"url": "http://localhost:5000/api/theaters?city=",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3c1fb218-5215-4311-8a69-704c22bb8f08",
+			"name": "Get My Theaters (owner)",
+			"url": "http://localhost:5000/api/theaters/mine",
+			"time": 3,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6a787d06-9855-417d-8e07-7324b57d25ab",
+			"name": "Get Theater By ID",
+			"url": "http://localhost:5000/api/theaters/",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bdefa58f-ffab-4c59-826f-1e2e547fa8d2",
+			"name": "Update Theater",
+			"url": "http://localhost:5000/api/theaters/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8e1acf68-d260-4a26-a99c-dc63aeee0e6d",
+			"name": "Delete Theater",
+			"url": "http://localhost:5000/api/theaters/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e04ba9de-b050-4bf1-bc7b-a8601d2c7636",
+			"name": "Create Screen",
+			"url": "http://localhost:5000/api/theaters//screens",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9015c4eb-e396-4a45-902f-472e6e66743f",
+			"name": "Get Screens By Theater",
+			"url": "http://localhost:5000/api/theaters//screens",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "809efdf3-4da9-4d68-b085-e3219b309d99",
+			"name": "Get Screen By ID",
+			"url": "http://localhost:5000/api/theaters//screens/",
+			"time": 1,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8069bccb-c0a7-4b8f-8951-3505331be189",
+			"name": "Update Screen",
+			"url": "http://localhost:5000/api/theaters//screens/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "56227dc8-e254-4130-aaa1-fed44b5f4382",
+			"name": "Delete Screen",
+			"url": "http://localhost:5000/api/theaters//screens/",
+			"time": 1,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2e5d3498-245c-4c9f-bfe5-3fb93f2dd82b",
+			"name": "Create Showtime (owner/admin)",
+			"url": "http://localhost:5000/api/showtimes",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7be6f777-cc95-4e8f-8d4b-6b4d87978546",
+			"name": "Get Showtimes By Movie",
+			"url": "http://localhost:5000/api/showtimes/movie/",
+			"time": 2,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "eebc272a-f168-4c67-bc6f-79a6e4f33964",
+			"name": "Get Showtimes By Theater",
+			"url": "http://localhost:5000/api/showtimes/theater/",
+			"time": 2,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "95b75dd0-ce90-4d81-ba89-1d758ceb39da",
+			"name": "Get Showtime By ID",
+			"url": "http://localhost:5000/api/showtimes/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "07aca924-65a2-4e9f-ab87-2d537e391044",
+			"name": "Update Showtime",
+			"url": "http://localhost:5000/api/showtimes/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "19fb554f-c396-4208-952f-4adb025b6d8d",
+			"name": "Cancel Showtime",
+			"url": "http://localhost:5000/api/showtimes//cancel",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4499babb-8fcf-4afc-94f6-64970067fd6d",
+			"name": "Delete Showtime (admin)",
+			"url": "http://localhost:5000/api/showtimes/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a4c01af6-6c83-4073-990a-563b73a0d8b6",
+			"name": "Get Seat Layout For Showtime",
+			"url": "http://localhost:5000/api/seats/screen//layout/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6f1ab008-b652-439e-bea7-205ac854f621",
+			"name": "Get Screen Seats (raw config)",
+			"url": "http://localhost:5000/api/seats/screen/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6d26447e-b23c-4e7c-a50e-f1b9d0aa3693",
+			"name": "Update Screen Seats (admin/owner)",
+			"url": "http://localhost:5000/api/seats/screen/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "79bdc3ed-2ca0-46e6-898a-c6b17cbbd3af",
+			"name": "Create Booking",
+			"url": "http://localhost:5000/api/bookings",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "34595032-fecd-400c-84e8-2ab1f0d03cfa",
+			"name": "Process Payment",
+			"url": "http://localhost:5000/api/payments",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "acd98773-14c2-415e-b10d-795870aed6c9",
+			"name": "Get Payment By Booking",
+			"url": "http://localhost:5000/api/payments/booking/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a05dd888-1f1a-41f3-bb11-13f37b77897d",
+			"name": "Refund Payment (admin/owner)",
+			"url": "http://localhost:5000/api/payments//refund",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "680e243c-59bc-4a30-b234-365bdbe16592",
+			"name": "Get Movie Reviews",
+			"url": "http://localhost:5000/api/reviews/movie/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "84d2bfe6-2c5c-485f-a2bc-902a32fae661",
+			"name": "Create Review",
+			"url": "http://localhost:5000/api/reviews",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "be75e94a-12a3-4546-b627-32948b615a0a",
+			"name": "Update Review",
+			"url": "http://localhost:5000/api/reviews/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2fdb10cd-5d2b-409b-8d8c-9c15bc5f43bd",
+			"name": "Delete Review",
+			"url": "http://localhost:5000/api/reviews/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "40ef6f5e-8215-464b-ad6a-65c582f7ae5f",
+			"name": "Get Active Offers",
+			"url": "http://localhost:5000/api/offers/active",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4d4da7c3-04af-4583-8da5-f4b02448f012",
+			"name": "Create Offer (admin)",
+			"url": "http://localhost:5000/api/offers",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0d969edb-584a-4807-bf63-de5faefbb834",
+			"name": "Get All Offers (admin)",
+			"url": "http://localhost:5000/api/offers",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b82a8649-3864-47e7-847e-50c046b10e4e",
+			"name": "Get Offer By ID (admin)",
+			"url": "http://localhost:5000/api/offers/",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7f67b23d-998e-4405-b5d7-1309dad7966f",
+			"name": "Update Offer (admin)",
+			"url": "http://localhost:5000/api/offers/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bae1e550-7aa0-4700-b1fd-f3fb29063fe1",
+			"name": "Deactivate Offer (admin)",
+			"url": "http://localhost:5000/api/offers//deactivate",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4f7a5870-f6d2-4b67-8eac-8064f59e8bd2",
+			"name": "Delete Offer (admin)",
+			"url": "http://localhost:5000/api/offers/",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ecaae174-a201-44e8-aaae-1fcc90604061",
+			"name": "Overview",
+			"url": "http://localhost:5000/api/theaters//dashboard/overview",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fd56f0a5-a074-4ac4-ab7f-d8e9dd391a3a",
+			"name": "Revenue By Movie",
+			"url": "http://localhost:5000/api/theaters//dashboard/revenue-by-movie",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c72f3ef3-88e6-4866-999e-eeaf7ebb25eb",
+			"name": "Upcoming Showtimes",
+			"url": "http://localhost:5000/api/theaters//dashboard/upcoming-showtimes",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 252,
+	"collection": {
+		"requests": [
+			{
+				"id": "2def716a-1b8e-423c-830d-22a2de66de9e",
+				"method": "POST"
+			},
+			{
+				"id": "47533306-65f9-4bc3-ac87-db27bdc64efd",
+				"method": "POST"
+			},
+			{
+				"id": "2c6e939f-ec60-4112-a0d7-fd63a4d33c8e",
+				"method": "POST"
+			},
+			{
+				"id": "243a7816-99b2-4a03-a5f3-b93eff201d9a",
+				"method": "POST"
+			},
+			{
+				"id": "885a0da2-b30f-49b3-ba1a-a2213ce55ead",
+				"method": "POST"
+			},
+			{
+				"id": "6c0e483c-b98e-41e8-ba5f-785c4dc5342f",
+				"method": "POST"
+			},
+			{
+				"id": "86f852a4-8e28-425c-8131-6e9cbae4970f",
+				"method": "POST"
+			},
+			{
+				"id": "ed172d74-4b20-47dc-850b-0304f293648c",
+				"method": "GET"
+			},
+			{
+				"id": "f21cfbb0-206b-49c3-a438-2bc0bc3a8aed",
+				"method": "GET"
+			},
+			{
+				"id": "b85431bf-b583-423c-8ae2-4c912aa3d5e5",
+				"method": "GET"
+			},
+			{
+				"id": "a026eea9-b740-4241-ad17-8f43c3344230",
+				"method": "GET"
+			},
+			{
+				"id": "f9610699-f977-4231-9029-b7001d15e50a",
+				"method": "GET"
+			},
+			{
+				"id": "a455895f-dbd9-44ec-b3e9-e65494af6452",
+				"method": "GET"
+			},
+			{
+				"id": "28a04b7d-ac39-43cd-8b97-25bffdf02dca",
+				"method": "GET"
+			},
+			{
+				"id": "deacf8d5-399e-4ec2-925a-f010d52ef7a9",
+				"method": "GET"
+			},
+			{
+				"id": "5d3cf460-4f0c-4795-9831-171b90050302",
+				"method": "POST"
+			},
+			{
+				"id": "7113ba78-b4a4-4a8e-ab6f-2b815c3d59a5",
+				"method": "PUT"
+			},
+			{
+				"id": "1aa64eef-4a18-432c-b081-ef7fa1a3277a",
+				"method": "DELETE"
+			},
+			{
+				"id": "9d3474d7-144f-4dc4-9d19-33ca1cd63b5b",
+				"method": "POST"
+			},
+			{
+				"id": "9ef2e0e9-4fba-4bb0-b04d-b100101c589a",
+				"method": "GET"
+			},
+			{
+				"id": "3c1fb218-5215-4311-8a69-704c22bb8f08",
+				"method": "GET"
+			},
+			{
+				"id": "6a787d06-9855-417d-8e07-7324b57d25ab",
+				"method": "GET"
+			},
+			{
+				"id": "bdefa58f-ffab-4c59-826f-1e2e547fa8d2",
+				"method": "PUT"
+			},
+			{
+				"id": "8e1acf68-d260-4a26-a99c-dc63aeee0e6d",
+				"method": "DELETE"
+			},
+			{
+				"id": "e04ba9de-b050-4bf1-bc7b-a8601d2c7636",
+				"method": "POST"
+			},
+			{
+				"id": "9015c4eb-e396-4a45-902f-472e6e66743f",
+				"method": "GET"
+			},
+			{
+				"id": "809efdf3-4da9-4d68-b085-e3219b309d99",
+				"method": "GET"
+			},
+			{
+				"id": "8069bccb-c0a7-4b8f-8951-3505331be189",
+				"method": "PUT"
+			},
+			{
+				"id": "56227dc8-e254-4130-aaa1-fed44b5f4382",
+				"method": "DELETE"
+			},
+			{
+				"id": "2e5d3498-245c-4c9f-bfe5-3fb93f2dd82b",
+				"method": "POST"
+			},
+			{
+				"id": "7be6f777-cc95-4e8f-8d4b-6b4d87978546",
+				"method": "GET"
+			},
+			{
+				"id": "eebc272a-f168-4c67-bc6f-79a6e4f33964",
+				"method": "GET"
+			},
+			{
+				"id": "95b75dd0-ce90-4d81-ba89-1d758ceb39da",
+				"method": "GET"
+			},
+			{
+				"id": "07aca924-65a2-4e9f-ab87-2d537e391044",
+				"method": "PUT"
+			},
+			{
+				"id": "19fb554f-c396-4208-952f-4adb025b6d8d",
+				"method": "PATCH"
+			},
+			{
+				"id": "4499babb-8fcf-4afc-94f6-64970067fd6d",
+				"method": "DELETE"
+			},
+			{
+				"id": "a4c01af6-6c83-4073-990a-563b73a0d8b6",
+				"method": "GET"
+			},
+			{
+				"id": "6f1ab008-b652-439e-bea7-205ac854f621",
+				"method": "GET"
+			},
+			{
+				"id": "6d26447e-b23c-4e7c-a50e-f1b9d0aa3693",
+				"method": "PUT"
+			},
+			{
+				"id": "79bdc3ed-2ca0-46e6-898a-c6b17cbbd3af",
+				"method": "POST"
+			},
+			{
+				"id": "34595032-fecd-400c-84e8-2ab1f0d03cfa",
+				"method": "POST"
+			},
+			{
+				"id": "acd98773-14c2-415e-b10d-795870aed6c9",
+				"method": "GET"
+			},
+			{
+				"id": "a05dd888-1f1a-41f3-bb11-13f37b77897d",
+				"method": "POST"
+			},
+			{
+				"id": "680e243c-59bc-4a30-b234-365bdbe16592",
+				"method": "GET"
+			},
+			{
+				"id": "84d2bfe6-2c5c-485f-a2bc-902a32fae661",
+				"method": "POST"
+			},
+			{
+				"id": "be75e94a-12a3-4546-b627-32948b615a0a",
+				"method": "PUT"
+			},
+			{
+				"id": "2fdb10cd-5d2b-409b-8d8c-9c15bc5f43bd",
+				"method": "DELETE"
+			},
+			{
+				"id": "40ef6f5e-8215-464b-ad6a-65c582f7ae5f",
+				"method": "GET"
+			},
+			{
+				"id": "4d4da7c3-04af-4583-8da5-f4b02448f012",
+				"method": "POST"
+			},
+			{
+				"id": "0d969edb-584a-4807-bf63-de5faefbb834",
+				"method": "GET"
+			},
+			{
+				"id": "b82a8649-3864-47e7-847e-50c046b10e4e",
+				"method": "GET"
+			},
+			{
+				"id": "7f67b23d-998e-4405-b5d7-1309dad7966f",
+				"method": "PUT"
+			},
+			{
+				"id": "bae1e550-7aa0-4700-b1fd-f3fb29063fe1",
+				"method": "PATCH"
+			},
+			{
+				"id": "4f7a5870-f6d2-4b67-8eac-8064f59e8bd2",
+				"method": "DELETE"
+			},
+			{
+				"id": "ecaae174-a201-44e8-aaae-1fcc90604061",
+				"method": "GET"
+			},
+			{
+				"id": "fd56f0a5-a074-4ac4-ab7f-d8e9dd391a3a",
+				"method": "GET"
+			},
+			{
+				"id": "c72f3ef3-88e6-4866-999e-eeaf7ebb25eb",
+				"method": "GET"
+			}
+		]
+	}
+}

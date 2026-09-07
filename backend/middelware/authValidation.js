@@ -43,6 +43,12 @@ exports.completeSignUpRules = [
     validate
 ];
 
+exports.refreshTokenRules = [
+    body('refreshToken')
+        .notEmpty().withMessage('Refresh token is required.'),
+    validate
+];
+
 exports.loginRules = [
     body('email')
         .trim()

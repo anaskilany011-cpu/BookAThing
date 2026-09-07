@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 exports.validateCreateBooking = (req,res,next)=>{
-    const {showtimeId , seatId} = req.body;
+    const {showtimeId , seats} = req.body;
     const userId = req.user?.userId||req.user?._id;
 
     if(!userId){
@@ -10,11 +10,8 @@ exports.validateCreateBooking = (req,res,next)=>{
     if(!showtimeId || !mongoose.Types.ObjectId.isValid(showtimeId)){
         return res.status(400).json({message:'invalid or missing Show time ID format '});
     }
-    if (!seatId||!Array(seatId)||seatId.length===0){
-        return res.status(400).json({message:'Seat IDs must be provided as  a non empty array'});}
-
-    if (!seatIds.every(id => mongoose.Types.ObjectId.isValid(id))) {
-        return res.status(400).json({ message: 'One or more Seat IDs are invalid.' });
+    if (!seats || !Array.isArray(seats) || seats.length === 0) {
+        return res.status(400).json({ message: 'Seats must be provided as a non-empty array' });
     }
 
     next();

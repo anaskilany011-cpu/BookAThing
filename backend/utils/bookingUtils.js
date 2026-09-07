@@ -1,21 +1,15 @@
 const sendEmail = require('./emailService');
 
-
-exports.evaluateBestOffer = async(subtotla,userId,showtimeId)=>{
-
-    return {
-        discountAmount : 0,
-        appliedOfferId:null
-    };
-};
+// Note: offer/discount evaluation lives in utils/offerEngine.js (evaluateBestOffer),
+// which is the implementation actually used by services/bookingServices.js.
 
 // check if the time of cancelling is overdue or not
 exports.isCancellationAllowed = (showtimeStartTime , cutoffHours = 2)=>{
     const showtimeDate = new Date(showtimeStartTime);
     const currentDate = new Date();
-    const cutoffMillis = cutoffHours * 60 * 60 *100;
+    const cutoffMillis = cutoffHours * 60 * 60 * 1000;
 
-    return (showtimeDate.getTime() - currentDate.getTime() ) > cutoffHours;
+    return (showtimeDate.getTime() - currentDate.getTime()) > cutoffMillis;
 }  
 
 exports.sendCancellationEmail = async (bookingData) => {

@@ -1,11 +1,10 @@
-// new user or new thing 
-import BaseResponse from "./BaseResponse";
+// new user or new thing
+const BaseResponse = require('./BaseResponse');
 
-class CreateResponse extends BaseResponse{
-    constructor(data=null,message="Created Successfully"){
-        super(201,true,message,data);
+class CreateResponse extends BaseResponse {
+    constructor(data = null, message = "Created Successfully") {
+        super(201, message, true, data);
     }
 }
 
-export default CreateResponse
-
+module.exports = CreateResponse;
