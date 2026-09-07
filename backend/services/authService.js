@@ -5,7 +5,7 @@ const { generateAccessToken, generateRefreshToken, verifyRefreshToken } = requir
 const AuthError = require('../exceptions/AuthError');
 const ValidationError = require('../exceptions/ValidationError');
 const NotFoundError = require('../exceptions/NotFoundError');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 class AuthService {
     /**

@@ -97,7 +97,7 @@ class ShowTimeService {
             return update;
         })(data);
 
-        const showtime = await Screening.findByIdAndUpdate(id, allowedUpdates, { new: true, runValidators: true });
+        const showtime = await Screening.findByIdAndUpdate(id, allowedUpdates, { returnDocument: 'after', runValidators: true });
         if (!showtime) {
             throw new NotFoundError('Showtime');
         }
@@ -108,7 +108,7 @@ class ShowTimeService {
         const showtime = await Screening.findByIdAndUpdate(
             id,
             { status: 'cancelled' },
-            { new: true }
+            { returnDocument: 'after' }
         );
         if (!showtime) {
             throw new NotFoundError('Showtime');

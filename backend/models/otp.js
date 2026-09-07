@@ -1,6 +1,6 @@
 // backend/models/Otp.js
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt'); // Required if you hash OTPs (recommended)
+const bcrypt = require('bcryptjs'); // Required if you hash OTPs (recommended)
 
 const otpSchema = new mongoose.Schema({
     email: {
@@ -23,16 +23,11 @@ const otpSchema = new mongoose.Schema({
     },
 });
 
-otpSchema.pre('save', async function (next) {
-    if (!this.isModified('otp')) return next();
+otpSchema.pre('save', async function () {
+    if (!this.isModified('otp')) return;
 
-    try {
-        const salt = await bcrypt.genSalt(10);
-        this.otp = await bcrypt.hash(this.otp, salt);
-        next();
-    } catch (error) {
-        next(error);
-    }
+    const salt = await bcrypt.genSalt(10);
+    this.otp = await bcrypt.hash(this.otp, salt);
 });
 
 

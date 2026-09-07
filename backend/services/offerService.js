@@ -60,7 +60,7 @@ class OfferService {
         const allowedUpdates = (({ title, condition, isActive, discountType, discountValue, startsAt, endAt }) =>
             ({ title, condition, isActive, discountType, discountValue, startsAt, endAt }))(data);
 
-        const offer = await Offer.findByIdAndUpdate(id, allowedUpdates, { new: true, runValidators: true });
+        const offer = await Offer.findByIdAndUpdate(id, allowedUpdates, { returnDocument: 'after', runValidators: true });
         if (!offer) {
             throw new NotFoundError('Offer');
         }
@@ -68,7 +68,7 @@ class OfferService {
     }
 
     static async deactivateOffer(id) {
-        const offer = await Offer.findByIdAndUpdate(id, { isActive: false }, { new: true });
+        const offer = await Offer.findByIdAndUpdate(id, { isActive: false }, { returnDocument: 'after' });
         if (!offer) {
             throw new NotFoundError('Offer');
         }

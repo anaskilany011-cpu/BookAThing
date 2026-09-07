@@ -32,7 +32,7 @@ class TheaterService {
 
     static async updateTheater(id, data) {
         const allowedUpdates = (({ name, location, phone, amenities }) => ({ name, location, phone, amenities }))(data);
-        const theater = await Theater.findByIdAndUpdate(id, allowedUpdates, { new: true, runValidators: true });
+        const theater = await Theater.findByIdAndUpdate(id, allowedUpdates, { returnDocument: 'after', runValidators: true });
         if (!theater) {
             throw new NotFoundError('Theater');
         }
@@ -116,7 +116,7 @@ class TheaterService {
             allowedUpdates.capacity = allowedUpdates.totalRows * allowedUpdates.seatsPerRow;
         }
 
-        const screen = await TheaterScreen.findByIdAndUpdate(screenId, allowedUpdates, { new: true, runValidators: true });
+        const screen = await TheaterScreen.findByIdAndUpdate(screenId, allowedUpdates, { returnDocument: 'after', runValidators: true });
         if (!screen) {
             throw new NotFoundError('Screen');
         }
