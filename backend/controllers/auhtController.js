@@ -12,17 +12,22 @@ exports.sendSignUpOtp = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Valid email is required.' });
     }
 
-    const sent = await createAndSendOtp({
+    const { success, devOtp } = await createAndSendOtp({
         email: lowerCaseEmail,
         subject: 'Verify Your Account',
         title: 'Welcome!'
     });
 
-    if (!sent) {
+    if (!success) {
         return res.status(500).json({ message: 'Failed to send OTP.' });
     }
 
-    return res.status(200).json({ message: 'OTP sent successfully.' });
+    // devOtp is only ever set outside production (see otpServices.js) — this
+    // never leaks a real OTP over the wire in production.
+    return res.status(200).json({
+        message: 'OTP sent successfully.',
+        ...(devOtp ? { devOtp } : {})
+    });
 });
 
 // --- Verify signup OTP, create the user, and issue tokens ---
@@ -57,8 +62,11 @@ exports.logout = asyncHandler(async (req, res) => {
 
 // --- Send a password-reset OTP (always responds success to avoid leaking account existence) ---
 exports.forgotPassword = asyncHandler(async (req, res) => {
-    await AuthService.forgotPassword(req.body.email);
-    new SuccessResponse(null, 'If an account with that email exists, a reset code has been sent.').send(res);
+    const devOtp = await AuthService.forgotPassword(req.body.email);
+    new SuccessResponse(
+        devOtp ? { devOtp } : null,
+        'If an account with that email exists, a reset code has been sent.'
+    ).send(res);
 });
 
 // --- Verify reset OTP and set a new password ---

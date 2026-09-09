@@ -5,7 +5,7 @@ const asyncHandler = require('../utils/asyncHandler');
 // --- Create a new review ---
 exports.createReview = asyncHandler(async (req, res) => {
     const { movieId, rating, comment } = req.body;
-    const userId = req.user._id || req.user.id;
+    const userId = req.user.userId;
 
     const review = await ReviewService.createReview({
         movieId,
@@ -33,7 +33,7 @@ exports.getMovieReviews = asyncHandler(async (req, res) => {
 // --- Update a review ---
 exports.updateReview = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const userId = req.user._id || req.user.id;
+    const userId = req.user.userId;
     const { rating, comment } = req.body;
 
     const updatedReview = await ReviewService.updateReview(id, userId, { rating, comment });
@@ -44,7 +44,7 @@ exports.updateReview = asyncHandler(async (req, res) => {
 // --- Delete a review ---
 exports.deleteReview = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const userId = req.user._id || req.user.id;
+    const userId = req.user.userId;
 
     await ReviewService.deleteReview(id, userId);
 

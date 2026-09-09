@@ -110,19 +110,22 @@ class AuthService {
     /**
      * Sends a password-reset OTP. Always resolves successfully regardless
      * of whether the email is registered, to avoid leaking account existence.
+     * Returns the OTP itself only outside production (for local/dev testing).
      */
     static async forgotPassword(email) {
         const cleanEmail = getCleanEmail(email);
-        if (!cleanEmail) return;
+        if (!cleanEmail) return null;
 
         const user = await User.findOne({ email: cleanEmail }).select('_id');
-        if (!user) return;
+        if (!user) return null;
 
-        await createAndSendOtp({
+        const { devOtp } = await createAndSendOtp({
             email: cleanEmail,
             subject: 'Reset Your Password',
             title: 'Password Reset Request'
         });
+
+        return devOtp;
     }
 
     /**

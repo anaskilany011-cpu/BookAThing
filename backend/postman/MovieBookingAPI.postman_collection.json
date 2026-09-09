@@ -57,6 +57,10 @@
     {
       "key": "offerId",
       "value": ""
+    },
+    {
+      "key": "lastOtp",
+      "value": ""
     }
   ],
   "item": [
@@ -91,7 +95,23 @@
               "type": "noauth"
             }
           },
-          "response": []
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "if (pm.response.code < 300) {",
+                  "    const body = pm.response.json();",
+                  "    if (body.devOtp) pm.collectionVariables.set('lastOtp', body.devOtp);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Complete Signup",
@@ -115,7 +135,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"01000000000\",\n  \"otp\": \"1234\"\n}"
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"01000000000\",\n  \"otp\": \"{{lastOtp}}\"\n}"
             },
             "auth": {
               "type": "noauth"
@@ -289,7 +309,24 @@
               "type": "noauth"
             }
           },
-          "response": []
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "if (pm.response.code < 300) {",
+                  "    const body = pm.response.json();",
+                  "    const data = body.data || {};",
+                  "    if (data.devOtp) pm.collectionVariables.set('lastOtp', data.devOtp);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ]
         },
         {
           "name": "Reset Password",
@@ -313,7 +350,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"test@example.com\",\n  \"otp\": \"1234\",\n  \"newPassword\": \"newPassword123\"\n}"
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"otp\": \"{{lastOtp}}\",\n  \"newPassword\": \"newPassword123\"\n}"
             },
             "auth": {
               "type": "noauth"

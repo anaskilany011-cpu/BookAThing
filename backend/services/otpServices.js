@@ -59,6 +59,10 @@ const createAndSendOtp = async ({ email, subject, title }) => {
         </div>
     `;
 
+    // devOtp is only ever populated outside production — see callers, which
+    // must never forward it to a client in production.
+    const devOtp = process.env.NODE_ENV !== 'production' ? otp : null;
+
     try {
         await sendEmail({
             email,
@@ -66,13 +70,13 @@ const createAndSendOtp = async ({ email, subject, title }) => {
             message: `Your OTP code is: ${otp}`,
             html: emailHtml
         });
-        return true;
+        return { success: true, devOtp };
     } catch (error) {
         console.error('Send OTP Email Error:', error.message);
         // In development, don't fail the request just because email sending
         // isn't configured yet — the OTP was already logged above and saved to
         // the database, so the flow can still be tested end-to-end.
-        return process.env.NODE_ENV !== 'production';
+        return { success: process.env.NODE_ENV !== 'production' ? true : false, devOtp };
     }
 };
 

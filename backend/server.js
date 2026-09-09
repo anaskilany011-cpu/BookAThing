@@ -49,6 +49,30 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
     console.error(err);
 
+    // Mongoose throws a CastError (no .statusCode) when an ID doesn't look
+    // like a valid ObjectId at all — e.g. an empty string or malformed value
+    // reaching findById()/findOne() unvalidated. Without this, it would fall
+    // through to the generic 500 below instead of a clear 400.
+    if (err.name === 'CastError') {
+        return res.status(400).json({
+            success: false,
+            message: `Invalid ${err.path}: '${err.value}'`,
+            errorCode: null,
+            details: null
+        });
+    }
+
+    // Mongoose schema validation errors (e.g. a required field missing on
+    // .save()) also don't carry .statusCode by default.
+    if (err.name === 'ValidationError' && err.errors) {
+        return res.status(400).json({
+            success: false,
+            message: 'Validation failed.',
+            errorCode: null,
+            details: Object.values(err.errors).map(e => e.message)
+        });
+    }
+
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal server error';
 
