@@ -1,75 +1,59 @@
 ﻿import { useState } from "react";
 import "./BookingFlow.css";
+import ProgressBar from "./ProgressBar";
+import DaySelector from "./DaySelector";
+import TimeSelector from "./TimeSelector";
+import SeatSelector from "./SeatSelector";
+import CustomerInfo from "./CustomerInfo";
+import Confirmation from "./Confirmation";
 
 export default function BookingFlow({ movie }) {
   const [step, setStep] = useState(1);
-  const [day, setDay] = useState("");
-  const [time, setTime] = useState("");
-  const [seats, setSeats] = useState([]);
   const [name, setName] = useState("");
-
-  const days = (() => {
-    const t = new Date();
-    return [0,1,2,3,4].map(i => {
-      const d = new Date(); 
-      d.setDate(t.getDate() + i);
-      const label = d.toLocaleDateString('ar-EG', { weekday: 'short' });
-      const display = label + " " + d.getDate() + "/" + (d.getMonth()+1);
-      return { id: d.toISOString(), label: display };
-    });
-  })();
-
+  const [phone, setPhone] = useState("");
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [payMethod, setPayMethod] = useState("fawry");
+  const [day, setDay] = useState("");
+  const [time, setTime] = useState("7:00 PM");
+  const fawryCode = "88" + Math.floor(Math.random()*10000000);
+  const days = [0,1,2].map(i => { const d = new Date(); d.setDate(new Date().getDate()+i); return d.toLocaleDateString("ar-EG", {weekday: "short", day: "numeric", month: "short"}); });
   const times = ["12:00 PM", "3:00 PM", "7:00 PM", "10:00 PM"];
-  const allSeats = Array.from({ length: 40 }, (_, i) => "R" + (Math.floor(i/8)+1) + "S" + ((i%8)+1));
-  const price = 120;
-
-  const toggleSeat = (s) => setSeats(prev => prev.includes(s) ? prev.filter(x=>x!==s) : [...prev, s]);
-  const reset = () => { setStep(1); setSeats([]); setDay(''); setTime(''); setName(''); };
-
+  const rows = ["A","B","C","D","E","F"];
+  const cols = [1,2,3,4,5,6,7,8];
+  const bookedSeats = ["A1","A2","B5","C3","F8"];
+  const toggleSeat = (s) => {
+    if (bookedSeats.includes(s)) return;
+    if (selectedSeats.includes(s)) setSelectedSeats(selectedSeats.filter(x=>x!==s));
+    else if (selectedSeats.length < 6) setSelectedSeats([...selectedSeats, s]);
+  };
+  const total = selectedSeats.length * (movie?.price || 120);
+  const canContinue = name.trim() !== "" && phone.length === 11 && selectedSeats.length > 0 && day !== "";
   return (
     <div className="booking-container">
-      <div style={{display:'flex', gap:'6px', marginBottom:'15px'}}>
-        {[1,2,3,4].map(s => <div key={s} style={{flex:1, height:'4px', borderRadius:'10px', background: step>=s ? '#E2C078' : '#333'}}></div>)}
-      </div>
-      <h3>{movie.title}</h3>
-      {step === 1 && (
-        <>
-          <p>اختار اليوم:</p>
-          <div style={{display:'flex', gap:'5px', flexWrap:'wrap'}}>
-            {days.map(d => <div key={d.id} onClick={()=>setDay(d.id)} style={{padding:'8px', border: day===d.id ? '2px solid #E2C078' : '1px solid #333', cursor:'pointer'}}>{d.label}</div>)}
-          </div>
-          <p>اختار الوقت:</p>
-          <div style={{display:'flex', gap:'5px', flexWrap:'wrap'}}>
-            {times.map(t => <div key={t} onClick={()=>setTime(t)} style={{padding:'8px', border: time===t ? '2px solid #E2C078' : '1px solid #333', cursor:'pointer'}}>{t}</div>)}
-          </div>
-          <button disabled={!day || !time} onClick={()=>setStep(2)}>التالي</button>
-        </>
-      )}
-      {step === 2 && (
-        <>
-          <p>المقاعد: {seats.length} - {seats.length * price} جنيه</p>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(8,1fr)', gap:'8px', margin:'20px 0'}}>
-            {allSeats.map(s => <div key={s} onClick={()=>toggleSeat(s)} style={{padding:'10px', border:'1px solid #444', background: seats.includes(s) ? '#e50914' : '#2a2a2a', cursor:'pointer'}}>{s}</div>)}
-          </div>
-          <button onClick={()=>setStep(1)}>رجوع</button>
-          <button disabled={seats.length===0} onClick={()=>setStep(3)}>التالي</button>
-        </>
-      )}
-      {step === 3 && (
-        <>
-          <input placeholder="اسمك" value={name} onChange={e=>setName(e.target.value)} style={{width:'100%', padding:'12px', marginBottom:'15px'}} />
-          <p>اليوم: {days.find(d=>d.id===day)?.label} - {time} - {seats.join(', ')}</p>
-          <button onClick={()=>setStep(2)}>رجوع</button>
-          <button disabled={!name} onClick={()=>setStep(4)}>تأكيد</button>
-        </>
-      )}
-      {step === 4 && (
-        <div style={{textAlign:'center', padding:'40px 0'}}>
-          <h2>✅ تم الحجز بنجاح!</h2>
-          <p>شكراً {name}، حجزك لـ {movie.title}</p>
-          <button onClick={reset}>حجز جديد</button>
+      <ProgressBar step={step} />
+      {step === 1 && <>
+        <h3 className="movie-title">{movie.title}</h3>
+        <DaySelector days={days} day={day} setDay={setDay} />
+        <TimeSelector times={times} time={time} setTime={setTime} />
+        <SeatSelector rows={rows} cols={cols} bookedSeats={bookedSeats} selectedSeats={selectedSeats} toggleSeat={toggleSeat} />
+        <CustomerInfo name={name} setName={setName} phone={phone} setPhone={setPhone} />
+        <button disabled={!canContinue} onClick={() => setStep(2)} className="btn-primary">متابعة - {total} جنيه</button>
+      </>}
+      {step === 2 && <>
+        <h3>طريقة الدفع</h3>
+        <div className="pay-grid">
+          <div onClick={() => setPayMethod("fawry")} className={payMethod === "fawry" ? "pay-card selected" : "pay-card"}>فوري</div>
+          <div onClick={() => setPayMethod("visa")} className={payMethod === "visa" ? "pay-card selected" : "pay-card"}>فيزا</div>
+          <div onClick={() => setPayMethod("wallet")} className={payMethod === "wallet" ? "pay-card selected" : "pay-card"}>محفظة</div>
         </div>
-      )}
+        {payMethod === "fawry" && <div className="box-dashed">كود فوري: {fawryCode}</div>}
+        <div className="summary-box">{day} - {time} - {selectedSeats.join(", ")} - {total} جنيه</div>
+        <div className="actions">
+          <button onClick={() => setStep(1)} className="btn-secondary">رجوع</button>
+          <button onClick={() => setStep(3)} className="btn-primary flex2">تأكيد الدفع</button>
+        </div>
+      </>}
+      {step === 3 && <Confirmation movie={movie} day={day} time={time} selectedSeats={selectedSeats} name={name} phone={phone} payMethod={payMethod} />}
     </div>
   );
 }
